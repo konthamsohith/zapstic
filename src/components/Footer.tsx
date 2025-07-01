@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
           <div>
             <div className="flex items-center space-x-3 mb-6">
               <img
-                src="./src/assets/Zapstic.png"
+                src="https://ik.imagekit.io/ji2lkjg53/Zapstic.png?updatedAt=1751398106620"
                 alt="Zapstic Logo"
                 className="w-10 h-10 object-contain"
               />
