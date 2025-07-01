@@ -8,10 +8,10 @@ const testimonials = [
 		quote:
 			'Big thanks to Zapstic for helping me automate my Instagram and LinkedIn! Super smooth process, saved me tons of time!',
 		rating: 5,
-		image: '/images/Shiva Rama Krishna.png', // <-- Updated to use your local image
+		image: '/images/shiva.jpg'
 	},
 	{
-		name: 'Deepak Puram',
+		name: 'Puram Deepak',
 		title: 'Startup founder',
 		quote:
 			'Their team helped us identify key opportunities for AI, then built tools that boosted both our speed and accuracy. We’re already seeing results.',
@@ -19,12 +19,12 @@ const testimonials = [
 		image: '/images/tbd.jpg',
 	},
 	{
-		name: 'Eli R',
-		title: 'COO at GridFrame',
+		name: 'Manoj Kumar',
+		title: 'Software Engineering Manager',
 		quote:
 			'From ideation to final delivery, they were incredibly proactive and sharp. Our new AI-powered assistant reduced manual work and improved user satisfaction.',
 		rating: 4,
-		image: 'https://ik.imagekit.io/ji2lkjg53/tbd.jpg?updatedAt=1751384039710',
+		image: 'https://www.shutterstock.com/image-photo/head-shot-handsome-millennial-30s-600nw-1854710668.jpg',
 	},
 ];
 
