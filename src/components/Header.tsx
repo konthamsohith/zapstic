@@ -34,7 +34,7 @@ const Header: React.FC = () => {
           <div className="flex items-center justify-between">
             <a href="#" className="flex items-center space-x-2">
               <img
-                src="./src/assets/Zapstic.png"
+                src="https://ik.imagekit.io/ji2lkjg53/Zapstic.png?updatedAt=1751398106620"
                 alt="Zapstic Logo"
                 className="w-10 h-10 object-contain"
               />

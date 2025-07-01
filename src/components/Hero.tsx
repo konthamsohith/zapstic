@@ -58,7 +58,7 @@ const Hero: React.FC = () => {
             }}
           >
             <img
-              src="./src/assets/Zapstic.png"
+              src="https://ik.imagekit.io/ji2lkjg53/Zapstic.png?updatedAt=1751398106620"
               alt="logo"
               className="w-full h-full object-contain"
             />
