@@ -3,12 +3,12 @@ import { Star } from 'lucide-react';
 
 const testimonials = [
 	{
-		name: 'Shiva Rama Krishna',
-		title: 'Software developer',
+		name: 'Manoj Kumar',
+		title: 'Software Engineering Manager',
 		quote:
-			'Big thanks to Zapstic for helping me automate my Instagram and LinkedIn! Super smooth process, saved me tons of time!',
+			'From ideation to final delivery, they were incredibly proactive and sharp. Our new AI-powered assistant reduced manual work and improved user satisfaction.',
 		rating: 5,
-		image: '/images/shiva.jpg'
+		image: '/images/manojkumar.jpg',
 	},
 	{
 		name: 'Puram Deepak',
@@ -19,13 +19,15 @@ const testimonials = [
 		image: '/images/tbd.jpg',
 	},
 	{
-		name: 'Manoj Kumar',
-		title: 'Software Engineering Manager',
+		name: 'Shiva Rama Krishna',
+		title: 'Software developer',
 		quote:
-			'From ideation to final delivery, they were incredibly proactive and sharp. Our new AI-powered assistant reduced manual work and improved user satisfaction.',
+			'Big thanks to Zapstic for helping me automate my Instagram and LinkedIn! Super smooth process, saved me tons of time!',
 		rating: 4,
-		image: 'https://www.shutterstock.com/image-photo/head-shot-handsome-millennial-30s-600nw-1854710668.jpg',
+		image: '/images/shiva.jpg'
 	},
+	
+	
 ];
 
 export default function Testimonials() {

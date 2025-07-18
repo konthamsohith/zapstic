@@ -96,3 +96,26 @@
 .stagger-3 { transition-delay: 0.3s; }
 .stagger-4 { transition-delay: 0.4s; }
 .stagger-5 { transition-delay: 0.5s; }*/
+
+/* Orb AI/Framer-like smooth scroll CSS */
+html.lenis, body.lenis {
+  scroll-behavior: auto !important;
+  overscroll-behavior: none;
+  height: auto;
+  overflow: auto;
+}
+
+html.lenis {
+  /* Optional: Hide scrollbars for a cleaner look */
+  scrollbar-width: thin;
+  scrollbar-color: #e0e0e0 #fff;
+}
+
+html.lenis::-webkit-scrollbar {
+  width: 8px;
+  background: #fff;
+}
+html.lenis::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  border-radius: 4px;
+}

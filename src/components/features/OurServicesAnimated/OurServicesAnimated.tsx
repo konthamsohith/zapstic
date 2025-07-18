@@ -6,7 +6,6 @@ interface Task {
   subtitle: string;
   statusIcon?: React.ReactNode;
 }
-
 interface ServiceSection {
   tabLabels: string[];
   tasks: Task[];
@@ -146,16 +145,25 @@ const XtractServiceSection: React.FC<ServiceSection & { reverse?: boolean; withW
   </div>
 );
 
+// Dynamically import all icons in the services folder
+const iconImports = import.meta.glob('../../../assets/icons/services/*', { eager: true, import: 'default' });
+const getIcon = (name: string) => {
+  const entry = Object.entries(iconImports).find(([path]) => path.endsWith('/' + name));
+  if (!entry) return null;
+  const src = entry[1] as string;
+  return <img src={src} alt="icon" width={24} height={24} style={{display:'block'}} />;
+};
+
 const OurServicesAnimated: React.FC = () => {
   const services: ServiceSection[] = [
     {
       tabLabels: ['All Tasks', 'Waiting for approval', 'Completed'],
       tasks: [
-        { icon: '📧', title: 'Email Processing', subtitle: 'Automated email sorting and responses', statusIcon: '✅' },
-        { icon: '📊', title: 'Data Analysis', subtitle: 'Real-time analytics and reporting', statusIcon: '✅' },
-        { icon: '🤖', title: 'Chatbot Support', subtitle: '24/7 customer service automation', statusIcon: '✅' },
-        { icon: '📝', title: 'Document Review', subtitle: 'AI-powered content analysis', statusIcon: '✅' },
-        { icon: '🔄', title: 'Workflow Automation', subtitle: 'Process optimization and routing', statusIcon: '✅' },
+        { icon: getIcon('email-processing.png'), title: 'Email Processing', subtitle: 'Automated email sorting and responses', statusIcon: getIcon('check.png') },
+        { icon: getIcon('data-analysis.png'), title: 'Data Analysis', subtitle: 'Real-time analytics and reporting', statusIcon: getIcon('check.png') },
+        { icon: getIcon('chatbot-support.png'), title: 'Chatbot Support', subtitle: '24/7 customer service automation', statusIcon: getIcon('check.png') },
+        { icon: getIcon('document-review.png'), title: 'Document Review', subtitle: 'AI-powered content analysis', statusIcon: getIcon('check.png') },
+        { icon: getIcon('workflow-automation.png'), title: 'Workflow Automation', subtitle: 'Process optimization and routing', statusIcon: getIcon('check.png') },
       ],
       label: 'Workflow Automation',
       heading: 'Streamline Your Business Processes',
@@ -168,11 +176,11 @@ const OurServicesAnimated: React.FC = () => {
     {
       tabLabels: ['Active Projects', 'In Progress', 'Completed'],
       tasks: [
-        { icon: '🎯', title: 'Lead Scoring', subtitle: 'AI-powered lead qualification', statusIcon: '✅' },
-        { icon: '📈', title: 'Sales Forecasting', subtitle: 'Predictive analytics for sales', statusIcon: '✅' },
-        { icon: '💬', title: 'Customer Support', subtitle: 'Automated ticket resolution', statusIcon: '✅' },
-        { icon: '📋', title: 'Contract Review', subtitle: 'Legal document analysis', statusIcon: '✅' },
-        { icon: '💰', title: 'Invoice Processing', subtitle: 'Automated payment tracking', statusIcon: '✅' },
+        { icon: getIcon('lead-scoring.png'), title: 'Lead Scoring', subtitle: 'AI-powered lead qualification', statusIcon: getIcon('check.png') },
+        { icon: getIcon('sales-forecasting.png'), title: 'Sales Forecasting', subtitle: 'Predictive analytics for sales', statusIcon: getIcon('check.png') },
+        { icon: getIcon('customer-support.png'), title: 'Customer Support', subtitle: 'Automated ticket resolution', statusIcon: getIcon('check.png') },
+        { icon: getIcon('contract-review.png'), title: 'Contract Review', subtitle: 'Legal document analysis', statusIcon: getIcon('check.png') },
+        { icon: getIcon('invoice-processing.png'), title: 'Invoice Processing', subtitle: 'Automated payment tracking', statusIcon: getIcon('check.png') },
       ],
       label: 'Sales & Marketing',
       heading: 'Boost Your Revenue with AI',
@@ -185,11 +193,11 @@ const OurServicesAnimated: React.FC = () => {
     {
       tabLabels: ['Support Tickets', 'Escalated', 'Resolved'],
       tasks: [
-        { icon: '🎧', title: 'Voice Recognition', subtitle: 'Multi-language support system', statusIcon: '✅' },
-        { icon: '📱', title: 'Mobile Integration', subtitle: 'Cross-platform compatibility', statusIcon: '✅' },
-        { icon: '🔍', title: 'Issue Detection', subtitle: 'Proactive problem identification', statusIcon: '✅' },
-        { icon: '📞', title: 'Call Routing', subtitle: 'Intelligent call distribution', statusIcon: '✅' },
-        { icon: '📊', title: 'Performance Metrics', subtitle: 'Real-time service analytics', statusIcon: '✅' },
+        { icon: getIcon('voice-recognition.png'), title: 'Voice Recognition', subtitle: 'Multi-language support system', statusIcon: getIcon('check.png') },
+        { icon: getIcon('mobile-integration.png'), title: 'Mobile Integration', subtitle: 'Cross-platform compatibility', statusIcon: getIcon('check.png') },
+        { icon: getIcon('issue-detection.png'), title: 'Issue Detection', subtitle: 'Proactive problem identification', statusIcon: getIcon('check.png') },
+        { icon: getIcon('call-routing.png'), title: 'Call Routing', subtitle: 'Intelligent call distribution', statusIcon: getIcon('check.png') },
+        { icon: getIcon('performance-metrics.png'), title: 'Performance Metrics', subtitle: 'Real-time service analytics', statusIcon: getIcon('check.png') },
       ],
       label: 'Customer Support',
       heading: 'Deliver Exceptional Customer Experience',
@@ -202,11 +210,11 @@ const OurServicesAnimated: React.FC = () => {
     {
       tabLabels: ['Data Sources', 'Processing', 'Insights'],
       tasks: [
-        { icon: '📊', title: 'Data Collection', subtitle: 'Multi-source data aggregation', statusIcon: '✅' },
-        { icon: '🧠', title: 'Pattern Recognition', subtitle: 'AI-driven insights discovery', statusIcon: '✅' },
-        { icon: '📈', title: 'Trend Analysis', subtitle: 'Predictive modeling', statusIcon: '✅' },
-        { icon: '📋', title: 'Report Generation', subtitle: 'Automated insights delivery', statusIcon: '✅' },
-        { icon: '🎯', title: 'Recommendations', subtitle: 'Actionable business insights', statusIcon: '✅' },
+        { icon: getIcon('data-collection.png'), title: 'Data Collection', subtitle: 'Multi-source data aggregation', statusIcon: getIcon('check.png') },
+        { icon: getIcon('pattern-recognition.png'), title: 'Pattern Recognition', subtitle: 'AI-driven insights discovery', statusIcon: getIcon('check.png') },
+        { icon: getIcon('trend-analysis.png'), title: 'Trend Analysis', subtitle: 'Predictive modeling', statusIcon: getIcon('check.png') },
+        { icon: getIcon('report-generation.png'), title: 'Report Generation', subtitle: 'Automated insights delivery', statusIcon: getIcon('check.png') },
+        { icon: getIcon('recommendations.png'), title: 'Recommendations', subtitle: 'Actionable business insights', statusIcon: getIcon('check.png') },
       ],
       label: 'Data Analytics',
       heading: 'Turn Data into Actionable Insights',
@@ -219,11 +227,11 @@ const OurServicesAnimated: React.FC = () => {
     {
       tabLabels: ['Content Creation', 'Review', 'Published'],
       tasks: [
-        { icon: '✍', title: 'Content Writing', subtitle: 'AI-powered copy generation', statusIcon: '✅' },
-        { icon: '🎨', title: 'Design Creation', subtitle: 'Automated visual content', statusIcon: '✅' },
-        { icon: '📹', title: 'Video Editing', subtitle: 'Smart video processing', statusIcon: '✅' },
-        { icon: '🔍', title: 'SEO Optimization', subtitle: 'Search engine optimization', statusIcon: '✅' },
-        { icon: '📱', title: 'Social Media', subtitle: 'Multi-platform posting', statusIcon: '✅' },
+        { icon: getIcon('content-writing.png'), title: 'Content Writing', subtitle: 'AI-powered copy generation', statusIcon: getIcon('check.png') },
+        { icon: getIcon('design-creation.png'), title: 'Design Creation', subtitle: 'Automated visual content', statusIcon: getIcon('check.png') },
+        { icon: getIcon('video-editing.png'), title: 'Video Editing', subtitle: 'Smart video processing', statusIcon: getIcon('check.png') },
+        { icon: getIcon('seo-optimization.png'), title: 'SEO Optimization', subtitle: 'Search engine optimization', statusIcon: getIcon('check.png') },
+        { icon: getIcon('social-media.png'), title: 'Social Media', subtitle: 'Multi-platform posting', statusIcon: getIcon('check.png') },
       ],
       label: 'Content Creation',
       heading: 'Create Engaging Content at Scale',
@@ -236,11 +244,11 @@ const OurServicesAnimated: React.FC = () => {
     {
       tabLabels: ['Security Monitoring', 'Threats', 'Resolved'],
       tasks: [
-        { icon: '🔒', title: 'Threat Detection', subtitle: 'Real-time security monitoring', statusIcon: '✅' },
-        { icon: '🛡', title: 'Access Control', subtitle: 'Intelligent authentication', statusIcon: '✅' },
-        { icon: '📊', title: 'Risk Assessment', subtitle: 'Automated vulnerability scanning', statusIcon: '✅' },
-        { icon: '🚨', title: 'Incident Response', subtitle: 'Automated threat response', statusIcon: '✅' },
-        { icon: '📈', title: 'Compliance Monitoring', subtitle: 'Regulatory compliance tracking', statusIcon: '✅' },
+        { icon: getIcon('threat-detection.png'), title: 'Threat Detection', subtitle: 'Real-time security monitoring', statusIcon: getIcon('check.png') },
+        { icon: getIcon('access-control.png'), title: 'Access Control', subtitle: 'Intelligent authentication', statusIcon: getIcon('check.png') },
+        { icon: getIcon('risk-assessment.png'), title: 'Risk Assessment', subtitle: 'Automated vulnerability scanning', statusIcon: getIcon('check.png') },
+        { icon: getIcon('incident-response.png'), title: 'Incident Response', subtitle: 'Automated threat response', statusIcon: getIcon('check.png') },
+        { icon: getIcon('compliance-monitoring.png'), title: 'Compliance Monitoring', subtitle: 'Regulatory compliance tracking', statusIcon: getIcon('check.png') },
       ],
       label: 'Security & Compliance',
       heading: 'Protect Your Business with AI Security',

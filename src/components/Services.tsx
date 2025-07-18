@@ -126,97 +126,35 @@ const XtractServiceSection: React.FC<XtractServiceSectionProps> = ({
   );
 };
 
-// Example data for six services
+// Dynamically import all icons in the services folder
+const iconImports = import.meta.glob('../assets/icons/services/*', { eager: true, import: 'default' });
+const getIcon = (name: string) => {
+  // Find the matching import path
+  const entry = Object.entries(iconImports).find(([path]) => path.endsWith('/' + name));
+  if (!entry) return null;
+  const src = entry[1] as string;
+  return <img src={src} alt="icon" width={20} height={20} style={{display:'block'}} />;
+};
+
 const services = [
   {
     tabLabels: ['All Tasks', 'Waiting for approval'],
     tasks: [
-      { icon: '💸', title: 'Payroll management', subtitle: 'Due on 2nd July', statusIcon: <span className="text-purple-400">✔</span> },
-      { icon: '👤', title: 'Employee Tracking', subtitle: '2 days ago', statusIcon: <span className="text-purple-400">✔</span> },
-      { icon: '📝', title: 'Social media post', subtitle: 'Cancelled by user', statusIcon: <span className="text-red-400">✖</span> },
-      { icon: '📋', title: 'Lead list', subtitle: '70% prepared', statusIcon: <span className="text-blue-400">⚙</span> },
-      { icon: '⏰', title: 'Payment reminder', subtitle: 'sent to selected clients', statusIcon: <span className="text-green-400">✔</span> },
+      { icon: getIcon('workflow-automation.png'), title: 'Workflow Automation', subtitle: 'Process optimization and routing', statusIcon: getIcon('check.png') },
+      { icon: getIcon('email-processing.png'), title: 'Email Processing', subtitle: 'Automated email sorting and responses', statusIcon: getIcon('check.png') },
+      { icon: getIcon('data-analysis.png'), title: 'Data Analysis', subtitle: 'Real-time analytics and reporting', statusIcon: getIcon('check.png') },
+      { icon: getIcon('chatbot-support.png'), title: 'Chatbot Support', subtitle: '24/7 customer service automation', statusIcon: getIcon('check.png') },
+      { icon: getIcon('document-review.png'), title: 'Document Review', subtitle: 'Automated document analysis', statusIcon: getIcon('check.png') },
     ],
-    label: 'Workflow Automation',
-    heading: 'Automate repetitive tasks',
-    description: 'We help you streamline internal operations by automating manual workflows like data entry, reporting, and approval chains saving time and cutting down errors.',
+    label: 'All Services',
+    heading: 'Automate your business processes',
+    description: 'Comprehensive AI automation solutions to transform your business operations and drive sustainable growth.',
     buttons: [
-      { text: 'Internal Task Bots', variant: 'secondary' as 'secondary' },
-      { text: '100+ Automations', variant: 'secondary' as 'secondary' },
+      { text: 'Get Started', variant: 'primary' as 'primary' },
+      { text: 'Learn More', variant: 'secondary' as 'secondary' },
     ],
   },
-  // ...repeat with different content for the other five services (use placeholder data)
-  {
-    tabLabels: ['All Tasks', 'Completed'],
-    tasks: [
-      { icon: '📦', title: 'Inventory Check', subtitle: 'Completed today', statusIcon: <span className="text-green-400">✔</span> },
-      { icon: '🚚', title: 'Shipment', subtitle: 'Dispatched', statusIcon: <span className="text-blue-400">🚚</span> },
-      { icon: '🛒', title: 'Order Processing', subtitle: 'In progress', statusIcon: <span className="text-yellow-400">⏳</span> },
-    ],
-    label: 'Inventory Management',
-    heading: 'Track and manage inventory',
-    description: 'Automate stock tracking, order processing, and shipment notifications to keep your business running smoothly.',
-    buttons: [
-      { text: 'Inventory Bots', variant: 'secondary' as 'secondary' },
-      { text: 'Real-time Updates', variant: 'secondary' as 'secondary' },
-    ],
-  },
-  {
-    tabLabels: ['All Tasks', 'Analytics'],
-    tasks: [
-      { icon: '📊', title: 'Sales Report', subtitle: 'Generated yesterday', statusIcon: <span className="text-blue-400">📈</span> },
-      { icon: '📈', title: 'Growth Metrics', subtitle: 'Updated weekly', statusIcon: <span className="text-green-400">✔</span> },
-    ],
-    label: 'Data Analytics',
-    heading: 'Gain actionable insights',
-    description: 'Transform your data into valuable insights with automated reporting and analytics dashboards.',
-    buttons: [
-      { text: 'Analytics Tools', variant: 'secondary' as 'secondary' },
-      { text: 'Custom Reports', variant: 'secondary' as 'secondary' },
-    ],
-  },
-  {
-    tabLabels: ['All Tasks', 'Integrations'],
-    tasks: [
-      { icon: '🔗', title: 'API Sync', subtitle: 'Last synced 1hr ago', statusIcon: <span className="text-green-400">✔</span> },
-      { icon: '🖥', title: 'CRM Integration', subtitle: 'Connected', statusIcon: <span className="text-blue-400">🔗</span> },
-    ],
-    label: 'System Integration',
-    heading: 'Connect your tools',
-    description: 'Seamlessly integrate your existing systems and tools for a unified workflow.',
-    buttons: [
-      { text: 'Integration Hub', variant: 'secondary' as 'secondary' },
-      { text: 'API Library', variant: 'secondary' as 'secondary' },
-    ],
-  },
-  {
-    tabLabels: ['All Tasks', 'Consulting'],
-    tasks: [
-      { icon: '💡', title: 'Strategy Session', subtitle: 'Scheduled tomorrow', statusIcon: <span className="text-purple-400">💡</span> },
-      { icon: '📅', title: 'Roadmap Planning', subtitle: 'In progress', statusIcon: <span className="text-yellow-400">⏳</span> },
-    ],
-    label: 'AI Consulting',
-    heading: 'Expert AI guidance',
-    description: 'Get strategic advice and implementation planning to maximize your AI investment.',
-    buttons: [
-      { text: 'Book a Session', variant: 'primary' as 'primary' },
-      { text: 'See Case Studies', variant: 'secondary' as 'secondary' },
-    ],
-  },
-  {
-    tabLabels: ['All Tasks', 'Learning'],
-    tasks: [
-      { icon: '📚', title: 'ML Workshop', subtitle: 'Next week', statusIcon: <span className="text-blue-400">📘</span> },
-      { icon: '🧠', title: 'AI Training', subtitle: 'Ongoing', statusIcon: <span className="text-green-400">✔</span> },
-    ],
-    label: 'AI Training',
-    heading: 'Upskill your team',
-    description: 'Empower your workforce with hands-on AI and machine learning training.',
-    buttons: [
-      { text: 'Join Workshop', variant: 'primary' as 'primary' },
-      { text: 'View Curriculum', variant: 'secondary' as 'secondary' },
-    ],
-  },
+  // You can add more service sections here as needed, following the same pattern
 ];
 
 const Services: React.FC = () => (
